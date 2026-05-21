@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quantum Expense Tracker - A premium, elegant, and secure glassmorphic expense tracking platform designed to monitor your food, shopping, and travel spending in real-time.">
+    <title>Quantum Expense Tracker | Premium Personal Finance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo" id="app-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #6366f1;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Quantum<span>Expenses</span>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('login') }}" class="btn btn-secondary" id="nav-login-btn">Log In</a>
+            <a href="{{ url_for('login') }}" class="btn btn-primary" id="nav-get-started-btn">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'info' }}" role="alert">
+                        {% if category == 'success' %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        {% endif %}
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero-area">
+            <div class="hero-badge">Next-Generation Spending Controls</div>
+            <h1 class="hero-title">Beautifully Track Your <br>Expenses <span>Without Effort</span></h1>
+            <p class="hero-desc">
+                Gain absolute clarity over your daily budget. Monitor gourmet dining, premium shopping excursions, and wanderlust travel logs within a single glassmorphic workspace.
+            </p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg" id="hero-cta-btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    Launch Application
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 Quantum Expenses Inc. Built with modern precision. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
